@@ -118,7 +118,7 @@ pipeline {
                         echo "Application URL: ${env.INGRESS_URL}"
                         echo ""
                         echo "Available Paths:"
-                        echo "- Home Page: ${env.INGRESS_URL}/"
+                        echo "- Login Page: ${env.INGRESS_URL}/"
                         echo "- About Page: ${env.INGRESS_URL}/about"
                         echo "- Services Page: ${env.INGRESS_URL}/services"
                         echo "- Contact Page: ${env.INGRESS_URL}/contact"
