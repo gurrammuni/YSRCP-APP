@@ -2,18 +2,18 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_HUB_REPO = 'jithendragurram/YCP-app'
+        DOCKER_HUB_REPO = 'jithendragurram/ysrcp-app'
         K8S_CLUSTER_NAME = 'Jithu-cluster'
         AWS_REGION = 'us-east-1'
         NAMESPACE = 'default'
-        APP_NAME = 'YCP'
+        APP_NAME = 'ysrcp'
     }
 
     stages {
         stage('Checkout') {
             steps {
                 echo 'Checking out source code...'
-                git 'https://github.com/gurrammuni/YSRCP-APP.git'
+                git 'https://github.com/gurrammuni/ysrcp-app.git'
             }
         }
 
