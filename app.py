@@ -172,6 +172,11 @@ def logout():
     session.clear()   # clear all session data
     return redirect(url_for("login"))
 
+@app.route("/health")
+def health():
+    return "OK", 200
+
+
 # Create DB and run
 if __name__ == '__main__':
     with app.app_context():
