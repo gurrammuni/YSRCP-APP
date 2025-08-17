@@ -119,9 +119,8 @@ pipeline {
                         echo ""
                         echo "Available Paths:"
                         echo "- Login Page: ${env.INGRESS_URL}/"
-                        echo "- About Page: ${env.INGRESS_URL}/about"
-                        echo "- Services Page: ${env.INGRESS_URL}/services"
-                        echo "- Contact Page: ${env.INGRESS_URL}/contact"
+                        echo "- signup: ${env.INGRESS_URL}/signup"
+                        echo "- Dashboard: ${env.INGRESS_URL}/Dashboard"
                         echo "========================================="
 
                         sh "curl -I ${env.INGRESS_URL}/ || echo 'Home page check failed'"
