@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_HUB_REPO = 'jithendragurram/ysrcp-app'
         K8S_CLUSTER_NAME = 'Jithu-cluster'
-        AWS_REGION = 'us-east-1'
+        AWS_REGION = 'ap-south-1'
         NAMESPACE = 'default'
         APP_NAME = 'ysrcp'
     }
@@ -65,7 +65,7 @@ pipeline {
                 echo 'Deploying application to Kubernetes...'
                 script {
                     withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-creds']]) {
-                        sh "sed -i 's|kastrov/studyhub-app:latest|kastrov/studyhub-app:${env.IMAGE_TAG}|g' k8s/deployment.yaml"
+                        sh "sed -i 's|jithendragurram/ysrcp-app:latest|jithendragurram/ysrcp-app:${env.IMAGE_TAG}|g' k8s/deployment.yaml"
                         sh "kubectl apply -f k8s/deployment.yaml"
                         sh "kubectl rollout status deployment/${APP_NAME}-deployment --timeout=300s"
                         sh "kubectl get pods -l app=${APP_NAME}"
