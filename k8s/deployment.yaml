@@ -4,20 +4,20 @@ metadata:
   name: ysrcp-deployment
   namespace: default
   labels:
-    app: YCP
+    app: ysrcp
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: YCP
+      app: ysrcp
   template:
     metadata:
       labels:
-        app: YCP
+        app: ysrcp
     spec:
       containers:
-      - name: YCP
-        image: jithendragurram/YCP-app:latest
+      - name: ysrcp
+        image: jithendragurram/ysrcp-app:latest
         ports:
         - containerPort: 80
         resources:
@@ -43,10 +43,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: YCP-service
+  name: ysrcp-service
   namespace: default
   labels:
-    app: YCP
+    app: ysrcp
 spec:
   type: ClusterIP
   ports:
@@ -54,4 +54,4 @@ spec:
     targetPort: 80
     protocol: TCP
   selector:
-    app: YCP
+    app: ysrcp
