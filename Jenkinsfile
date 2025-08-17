@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_HUB_REPO = 'jithendragurram/ysrcp-app'
-        K8S_CLUSTER_NAME = 'Jithu-cluster'
+        K8S_CLUSTER_NAME = 'jithu-cluster'
         AWS_REGION = 'ap-south-1'
         NAMESPACE = 'default'
         APP_NAME = 'ysrcp'
