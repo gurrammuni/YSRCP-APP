@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: YCP-deployment
+  name: ysrcp-deployment
   namespace: default
   labels:
     app: YCP
