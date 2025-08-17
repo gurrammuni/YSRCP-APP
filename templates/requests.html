@@ -1,0 +1,5 @@
+<h2>Friend Requests</h2>
+{% for req in requests %}
+  <p>{{ req.sender_id }} sent you a request 
+     <a href="{{ url_for('accept_request', req_id=req.id) }}">Accept</a></p>
+{% endfor %}

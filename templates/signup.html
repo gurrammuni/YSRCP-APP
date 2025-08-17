@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YSRCP Signup</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .container {
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: #f9f9f9;
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            margin: 8px 0;
+            padding: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #0080ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .countdown {
+            margin-top: 10px;
+            color: red;
+            font-weight: bold;
+        }
+        .resend-btn {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="{{ url_for('static', filename='images/ysrcp_logo.png') }}" alt="YSRCP Logo" width="100">
+        <h2>Signup</h2>
+
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        {% if success %}
+            <p style="color: green;">{{ success }}</p>
+        {% endif %}
+
+        <!-- Signup Form -->
+        <form method="POST">
+            <input type="text" name="name" placeholder="Name" required value="{{ name or '' }}">
+            <input type="text" name="mobile" placeholder="Mobile" required value="{{ mobile or '' }}">
+            <input type="email" name="email" placeholder="Email" required value="{{ email or '' }}">
+            <input type="password" name="password" placeholder="Password" required value="{{ password or '' }}">
+
+            {% if not otp_sent %}
+                <button type="submit" name="action" value="send_otp">Send OTP</button>
+            {% endif %}
+        </form>
+
+        <!-- OTP Form -->
+        {% if otp_sent %}
+        <form method="POST" id="otp-form">
+            <input type="hidden" name="name" value="{{ name }}">
+            <input type="hidden" name="mobile" value="{{ mobile }}">
+            <input type="hidden" name="email" value="{{ email }}">
+            <input type="hidden" name="password" value="{{ password }}">
+            <input type="text" name="otp" placeholder="Enter OTP" required><br>
+            <button type="submit" name="action" value="verify_otp">Verify OTP</button>
+        </form>
+        <div class="countdown" id="timer">Resend OTP in 60s</div>
+        <form method="POST">
+            <input type="hidden" name="name" value="{{ name }}">
+            <input type="hidden" name="mobile" value="{{ mobile }}">
+            <input type="hidden" name="email" value="{{ email }}">
+            <input type="hidden" name="password" value="{{ password }}">
+            <button type="submit" name="action" value="resend_otp" class="resend-btn" id="resendBtn">Resend OTP</button>
+        </form>
+        {% endif %}
+
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+    </div>
+
+    <script>
+        {% if otp_sent %}
+        let timer = 60;
+        const countdownEl = document.getElementById("timer");
+        const resendBtn = document.getElementById("resendBtn");
+
+        const interval = setInterval(() => {
+            if (timer > 0) {
+                countdownEl.innerText = `Resend OTP in ${timer}s`;
+                timer--;
+            } else {
+                clearInterval(interval);
+                countdownEl.style.display = "none";
+                resendBtn.style.display = "block";
+            }
+        }, 1000);
+        {% endif %}
+    </script>
+</body>
+</html>

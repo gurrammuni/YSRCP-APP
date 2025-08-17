@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verify OTP - YSRCP</title>
+    <script>
+        let waitTime = 30; // seconds
+        let resendBtn;
+        let countdownText;
+
+        window.onload = function () {
+            resendBtn = document.getElementById('resendBtn');
+            countdownText = document.getElementById('countdown');
+
+            disableButton();
+        };
+
+        function disableButton() {
+            resendBtn.disabled = true;
+            let interval = setInterval(() => {
+                countdownText.innerText = `Please wait ${waitTime} seconds to resend OTP.`;
+                waitTime--;
+                if (waitTime < 0) {
+                    clearInterval(interval);
+                    countdownText.innerText = '';
+                    resendBtn.disabled = false;
+                }
+            }, 1000);
+        }
+    </script>
+</head>
+<body>
+    <h2>Verify OTP</h2>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    {% if message %}
+        <p style="color: green;">{{ message }}</p>
+    {% endif %}
+
+    <form method="POST">
+        <label>Enter OTP sent to your email:</label><br>
+        <input type="text" name="otp" placeholder="OTP" required>
+        <br><br>
+        <button type="submit">Verify OTP</button>
+    </form>
+
+    <br>
+    <form method="GET" action="{{ url_for('verify_otp') }}">
+        <button type="submit" name="resend" value="true" id="resendBtn">Resend OTP</button>
+        <p id="countdown" style="color: gray;"></p>
+    </form>
+</body>
+</html>

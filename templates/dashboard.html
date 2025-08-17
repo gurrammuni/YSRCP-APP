@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            margin-top: 15px;
+            color: #333;
+        }
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .card {
+            background: #3498db;
+            color: white;
+            padding: 30px;
+            margin: 15px;
+            border-radius: 8px;
+            width: 180px;
+            height: 100px;
+            text-align: center;
+            font-size: 18px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .card:hover {
+            background: #2980b9;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 25px;
+            background: #e74c3c;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <h2>Welcome, {{ user_name }}</h2>
+    <h4>VYSHYA KUTUMB</h4>
+    <h3>Available Services</h3>
+
+    <div class="services">
+        <a href="{{ url_for('reports') }}" class="card">📊 Reports</a>
+        <a href="{{ url_for('announcements') }}" class="card">📢 Announcements</a>
+        <a href="{{ url_for('manage_users') }}" class="card">👥 Manage Users</a>
+        <a href="{{ url_for('location_updates') }}" class="card">📍 Location Updates</a>
+        <a href="{{ url_for('settings') }}" class="card">⚙️ Settings</a>
+    </div>
+
+    <form action="{{ url_for('logout') }}" method="post">
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>

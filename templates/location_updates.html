@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Location Updates</title>
+    <style>
+        body { font-family: Arial; background: #fdfdfd; text-align: center; }
+        h2 { color: #8e44ad; margin-top: 20px; }
+        .loc-box {
+            background: #f3e6ff;
+            margin: 15px auto;
+            padding: 15px;
+            border-radius: 6px;
+            width: 60%;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h2>📍 Location Updates</h2>
+    <div class="loc-box">
+        <b>Andhra Pradesh:</b> 50 new users joined from Vijayawada, Guntur & Tirupati.
+    </div>
+    <div class="loc-box">
+        <b>Telangana:</b> 30 new users joined from Hyderabad & Warangal.
+    </div>
+    <a href="{{ url_for('dashboard') }}">⬅ Back to Dashboard</a>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<h2>Chat with {{ user.name }}</h2>
+<div>
+  {% for msg in messages %}
+    <p><b>{{ "Me" if msg.sender_id == session["user_id"] else user.name }}:</b> {{ msg.content }}</p>
+  {% endfor %}
+</div>
+<form method="POST">
+  <input type="text" name="message" required>
+  <button type="submit">Send</button>
+</form>

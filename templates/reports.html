@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reports</title>
+    <style>
+        body { font-family: Arial; background: #f9f9f9; text-align: center; }
+        h2 { color: #2c3e50; margin-top: 20px; }
+        .report-card {
+            background: #ecf0f1;
+            margin: 20px auto;
+            padding: 20px;
+            width: 60%;
+            border-radius: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h2>📊 Reports</h2>
+    <div class="report-card">
+        <h3>User Activity</h3>
+        <p>Last 7 days active users: <b>156</b></p>
+        <p>New signups this week: <b>24</b></p>
+    </div>
+    <div class="report-card">
+        <h3>System Usage</h3>
+        <p>Server uptime: <b>99.97%</b></p>
+        <p>Average response time: <b>240ms</b></p>
+    </div>
+    <a href="{{ url_for('dashboard') }}">⬅ Back to Dashboard</a>
+</body>
+</html>

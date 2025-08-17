@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Settings</title>
+    <style>
+        body { font-family: Arial; background: #fafafa; text-align: center; }
+        h2 { color: #d35400; margin-top: 20px; }
+        form {
+            background: #fff3e0;
+            padding: 20px;
+            margin: 20px auto;
+            width: 50%;
+            border-radius: 8px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background: #e67e22;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover { background: #d35400; }
+    </style>
+</head>
+<body>
+    <h2>⚙️ Settings</h2>
+    <form>
+        <label>Change Name:</label><br>
+        <input type="text" placeholder="Enter new name"><br>
+        <label>Change Password:</label><br>
+        <input type="password" placeholder="Enter new password"><br>
+        <button type="submit">Save Changes</button>
+    </form>
+    <a href="{{ url_for('dashboard') }}">⬅ Back to Dashboard</a>
+</body>
+</html>
