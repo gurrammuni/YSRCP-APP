@@ -2,30 +2,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ysrcp-ingress
-  namespace: default
   annotations:
-    kubernetes.io/ingress.class: "nginx"
+    kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /$1
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
-  tls:
-  - hosts:
-    - ysrcp.yourdomain.com
-    secretName: ysrcp-tls
   rules:
-  - host: ysrcp.yourdomain.com
+  - host: ysrcp.jithu.in   # replace with your domain (or use AWS LB hostname)
     http:
-      paths:
-      - path: /(.*)
-        pathType: Prefix
-        backend:
-          service:
-            name: ysrcp-service
-            port:
-              number: 80
-  - http:
       paths:
       - path: /(.*)
         pathType: Prefix
