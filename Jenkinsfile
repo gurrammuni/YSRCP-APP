@@ -67,7 +67,7 @@ pipeline {
                     withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-creds']]) {
                         sh "sed -i 's|jithendragurram/ysrcp-app:latest|jithendragurram/ysrcp-app:${env.IMAGE_TAG}|g' k8s/deployment.yaml"
                         sh "kubectl apply -f k8s/deployment.yaml"
-                        sh "kubectl rollout status deployment/${APP_NAME}-deployment --timeout=300s"
+                        sh "kubectl rollout status deployment/${APP_NAME}-deployment --timeout=600s"
                         sh "kubectl get pods -l app=${APP_NAME}"
                         sh "kubectl get svc ${APP_NAME}-service"
                     }
